@@ -49,6 +49,16 @@ class Competition
      */
     private $teams;
 
+    public function getAllPlayers() {
+        $returnList = new Collection();
+        foreach ($this->teams as $team) {
+            foreach ($team->getPlayers() as $player) {
+                $returnList->add($player);
+            }
+        }
+        return $returnList;
+    }
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
