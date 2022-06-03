@@ -32,6 +32,11 @@ class Player
      */
     private $role;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Team::class, inversedBy="players")
+     */
+    private $team;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Player
     public function setRole(?string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): self
+    {
+        $this->team = $team;
 
         return $this;
     }
